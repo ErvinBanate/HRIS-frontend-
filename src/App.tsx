@@ -1,7 +1,6 @@
 import { ThemeProvider } from "./components/theme-provider"
 import UserDash from "./UserDash"
 
-
 function App() {
 
   return (
@@ -11,5 +10,4 @@ function App() {
     </ThemeProvider>
   )
 }
-
 export default App
