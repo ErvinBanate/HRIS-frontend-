@@ -25,7 +25,7 @@ const Time: React.FC = () => {
       return () => clearInterval(intervalId); 
     }, []);
   return (
-    <div className="font-bold">
+    <div className="font-medium">
         {showTime}
     </div>
   )
