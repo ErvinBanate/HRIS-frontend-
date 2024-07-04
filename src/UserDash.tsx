@@ -19,6 +19,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "./components/ui/sheet"
 import { Calendar } from "./components/ui/calendar"
 import { ModeToggle } from "./components/mode-toggle"
+import { Time } from "./components/ui/time"
 
 
 const UserDash = () => {
@@ -162,6 +163,7 @@ const UserDash = () => {
             className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm" x-chunk="dashboard-02-chunk-1"
           >
             <div className="flex flex-col items-center gap-1 text-center">
+              <Time/>
               <Calendar
               mode="single"
               className="rounded-md border"
