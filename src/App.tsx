@@ -1,4 +1,3 @@
-import { Button } from "./components/ui/button"
 import { ThemeProvider } from "./components/theme-provider"
 import UserDash from "./UserDash"
 
