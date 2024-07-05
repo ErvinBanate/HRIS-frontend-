@@ -1,11 +1,11 @@
 import { ThemeProvider } from "./components/theme-provider"
-import UserDash from "./UserDash"
+import Dashboard from "./Dashboard"
 
 function App() {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <UserDash/>
+      <Dashboard/>
     </ThemeProvider>
   )
 }

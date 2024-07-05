@@ -20,9 +20,9 @@ import { Sheet, SheetContent, SheetTrigger } from "./components/ui/sheet"
 import { Calendar } from "./components/ui/calendar"
 import { ModeToggle } from "./components/mode-toggle"
 import { Time } from "./components/ui/time"
+import { FormDropdown } from "./components/ui/formdd"
 
-
-const UserDash = () => {
+const Dashboard = () => {
   
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -53,25 +53,7 @@ const UserDash = () => {
                     Forms
                     </div>
                     <div className="ml-auto"> 
-                        <DropdownMenu >
-                            <DropdownMenuTrigger asChild>
-                            <Button variant="secondary" size="icon" className="rounded-5p ">
-                                <ChevronDown />
-                                <span className="sr-only">Toggle user menu</span>
-                            </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                            <DropdownMenuItem>Shift</DropdownMenuItem>
-                            <DropdownMenuItem>Time Correction</DropdownMenuItem>
-                            <DropdownMenuItem>Leave</DropdownMenuItem>
-                            <DropdownMenuItem>Leave Cancellation</DropdownMenuItem>
-                            <DropdownMenuItem>Overtime</DropdownMenuItem>
-                            <DropdownMenuItem>Overtime Cancellation</DropdownMenuItem>
-                            <DropdownMenuItem>Undertime</DropdownMenuItem>
-                            <DropdownMenuItem>Business Trip</DropdownMenuItem>
-                            <DropdownMenuItem>Dispute</DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
+                      <FormDropdown/>
                     </div>
                 </div>
             </nav>
@@ -176,5 +158,5 @@ const UserDash = () => {
   )
 }
 
-export default UserDash
+export default Dashboard
 
