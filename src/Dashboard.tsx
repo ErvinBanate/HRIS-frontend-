@@ -4,7 +4,6 @@ import {
   Home,
   Menu,
   FileText,
-  ChevronDown,
   HandCoins,
 } from "lucide-react"
 import { Button } from "./components/ui/button"
@@ -20,7 +19,7 @@ import { Sheet, SheetContent, SheetTrigger } from "./components/ui/sheet"
 import { Calendar } from "./components/ui/calendar"
 import { ModeToggle } from "./components/mode-toggle"
 import { Time } from "./components/ui/time"
-import { FormDropdown } from "./components/ui/formdd"
+import { FormDropdown } from "./components/ui/form-dropdown"
 
 const Dashboard = () => {
   
@@ -95,25 +94,7 @@ const Dashboard = () => {
                     Forms
                     </div>
                     <div className="ml-auto"> 
-                        <DropdownMenu >
-                            <DropdownMenuTrigger asChild>
-                            <Button variant="secondary" size="icon" className="rounded-5p ">
-                                <ChevronDown />
-                                <span className="sr-only">Toggle user menu</span>
-                            </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                            <DropdownMenuItem>Shift</DropdownMenuItem>
-                            <DropdownMenuItem>Time Correction</DropdownMenuItem>
-                            <DropdownMenuItem>Leave</DropdownMenuItem>
-                            <DropdownMenuItem>Leave Cancellation</DropdownMenuItem>
-                            <DropdownMenuItem>Overtime</DropdownMenuItem>
-                            <DropdownMenuItem>Overtime Cancellation</DropdownMenuItem>
-                            <DropdownMenuItem>Undertime</DropdownMenuItem>
-                            <DropdownMenuItem>Business Trip</DropdownMenuItem>
-                            <DropdownMenuItem>Dispute</DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
+                        <FormDropdown/>
                     </div>
                 </div>
               </nav>
