@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
@@ -12,8 +12,8 @@ export function LoginForm() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setError(""); // Clear any previous errors
     if(!email){
       setError("Please enter a valid email address")
@@ -24,11 +24,9 @@ export function LoginForm() {
       return;
     }
 
-    setError(""); // Clear
-
     // Login with Authentication
     try {
-      
+
       await axiosInstance.post('/auth/login', {
         email : email, 
         password: password
