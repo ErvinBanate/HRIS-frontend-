@@ -26,33 +26,20 @@ export function LoginForm() {
 
     setError(""); // Clear
 
+    // Login with Authentication
     try {
-      await axiosInstance.post('/auth/login', {email : email, password: password}).then(() => {
+      
+      await axiosInstance.post('/auth/login', {
+        email : email, 
+        password: password
+      }).then(() => {
         navigate('/dashboard');
       }).catch((error) => {
         console.log(error);
       });
-      
-      // Perform your login logic here
-      // For example, you can use fetch to send a request to your backend
-      // const response  = await fetch("/api/login", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({ email, password }),
-      // });
 
-      //   if (!response.ok){
-      //     navigate('/dashboard')
-      //   }
-      
     } catch (error) {
-        if(error instanceof Error && error.response && error.response.data && error.response.data.message){
-            setError(error.response.data.message);
-        } else {
-            setError("An unexpected error occurred. Please try again");
-        }
+      setError("An unexpected error occurred. Please try again");
     }
   };
 
