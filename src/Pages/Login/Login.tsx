@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../utils/axiosInstance";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");
@@ -26,19 +27,25 @@ export function LoginForm() {
     setError(""); // Clear
 
     try {
+      await axiosInstance.post('/auth/login', {email : email, password: password}).then(() => {
+        navigate('/dashboard');
+      }).catch((error) => {
+        console.log(error);
+      });
+      
       // Perform your login logic here
       // For example, you can use fetch to send a request to your backend
-      const  = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      // const response  = await fetch("/api/login", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ email, password }),
+      // });
 
-        if (!response.ok){
-          navigate('/dashboard')
-        }
+      //   if (!response.ok){
+      //     navigate('/dashboard')
+      //   }
       
     } catch (error) {
         if(error instanceof Error && error.response && error.response.data && error.response.data.message){
