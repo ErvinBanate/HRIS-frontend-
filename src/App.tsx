@@ -1,11 +1,15 @@
+import { LoginForm } from "./Pages/Login/Login"
+
+
+
 
 function App() {
 
   return (
     <>
-     <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div className="flex min-h-screen items-center justify-center">
+      <LoginForm/>
+    </div>
     </>
   )
 }
