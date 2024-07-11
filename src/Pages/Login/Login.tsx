@@ -28,7 +28,7 @@ export function LoginForm() {
     try {
       // Perform your login logic here
       // For example, you can use fetch to send a request to your backend
-      const response = await fetch("/api/login", {
+      const  = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
