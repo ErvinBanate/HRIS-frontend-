@@ -10,17 +10,31 @@ export function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorPass, setErrorPass] = useState("");
   const navigate = useNavigate();
+
+  const isValidEmail = (email: string) => {
+    // Basic email validation regex
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(""); // Clear any previous errors
+    setError("");
+    setErrorEmail("");
+    setErrorPass("");
     if(!email){
-      setError("Please enter a valid email address")
+      setErrorEmail("Please Enter A Valid Email Address")
+      return;
+    }
+    if(!isValidEmail(email)){
+      setErrorEmail("Please Enter A Valid Email Address")
       return;
     }
     if(!password){
-      setError("Please enter the password.");
+      setErrorPass("Please Enter A Password");
       return;
     }
 
@@ -30,9 +44,17 @@ export function LoginForm() {
       await axiosInstance.post('/auth/login', {
         email : email, 
         password: password
-      }).then(() => {
-        navigate('/dashboard');
-      }).catch((error) => {
+      }).then(response => {
+        if(response.data.status){
+          navigate('/dashboard');
+          console.log('success');
+          
+        }else{
+          setErrorEmail(response.data.errorEmail);
+          setErrorPass(response.data.errorPass);
+          return;
+        }
+      }).catch(error => {
         console.log(error);
       });
 
@@ -51,16 +73,18 @@ export function LoginForm() {
       </CardHeader>
       <form onSubmit={handleSubmit}>
         <CardContent className="grid gap-4">
+          {error && <p className='text-red-500 ml-5 text-xs pb-1'>{error}</p>}
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
-              type="email"
+              type="text"
               placeholder="example@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               
             />
+          {errorEmail && <p className='text-red-500 text-xs pb-1'>{errorEmail}</p>}
           </div>
           <div className="grid gap-2">
             <Label htmlFor="password">Password</Label>
@@ -71,8 +95,8 @@ export function LoginForm() {
               onChange={(e) => setPassword(e.target.value)}
               
             />
+          {errorPass && <p className='text-red-500 text-xs pb-1'>{errorPass}</p>}
           </div>
-          {error && <p className='text-red-500 ml-5 text-xs pb-1'>{error}</p>}
 
         </CardContent>
         <CardFooter>
